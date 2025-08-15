@@ -9,10 +9,11 @@ export class Common {
 
   set(data: BreadcrumbModel[]) {
     const val: BreadcrumbModel = {
-      title: 'Ana Sayfa',
+      title: 'Home',
       icon: 'home',
       url: '/',
     };
     this.data = data;
+    this.data.unshift(val);
   }
 }
