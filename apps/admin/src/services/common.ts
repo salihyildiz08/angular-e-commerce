@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BreadcrumbModel } from '../pages/layouts/breadcrumb';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Common {
-  data: BreadcrumbModel[] = [];
+readonly  data= signal< BreadcrumbModel[]>([]);
 
   set(data: BreadcrumbModel[]) {
     const val: BreadcrumbModel = {
@@ -13,7 +13,6 @@ export class Common {
       icon: 'home',
       url: '/',
     };
-    this.data = data;
-    this.data.unshift(val);
+    this.data.set([val,...data]);
   }
 }
