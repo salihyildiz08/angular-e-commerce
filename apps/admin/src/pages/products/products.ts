@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
-import { httpResource } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
 
@@ -23,7 +23,7 @@ export interface ProductModel {
 }
 
 @Component({
-  imports: [Blank, FlexiGridModule,RouterLink],
+  imports: [Blank, FlexiGridModule, RouterLink],
   templateUrl: './products.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,8 +35,8 @@ export default class Products {
 
   readonly data = computed(() => this.result.value() || []);
   readonly loading = computed(() => this.result.isLoading());
-    readonly #toast = inject(FlexiToastService);
-
+  readonly #toast = inject(FlexiToastService);
+  readonly #http = inject(HttpClient);
 
   readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
     {
@@ -50,9 +50,18 @@ export default class Products {
   ]);
 
   delete(id: string) {
-    this.#toast.showSwal("Ürünü Sil?","Ürünü silmek istiyor musunuz?","Sil",() => {
-      this.result.reload();
-    });
-
+    console.log('Deleting product with ID:', id);
+    this.#toast.showSwal(
+      'Ürünü Sil?',
+      'Ürünü silmek istiyor musunuz?',
+      'Sil',
+      () => {
+        this.#http
+          .delete(`http://localhost:3000/products/${id}`)
+          .subscribe((res) => {
+            this.result.reload();
+          });
+      }
+    );
   }
 }
