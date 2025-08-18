@@ -1,24 +1,24 @@
-<app-blank pageTitle="Products" [breadcrumbs]="[{title:'Products',url:'/products',icon:'deployed_code'}]"/>
-<flexi-grid [data]="data()"
-[showCaption]="true"
-captionTitle="Product List"
-[showExportExcelBtn]="true"
-language="tr"
-[loading]="loading()"
-(onRefresh)="result.reload()"
->
+<app-blank pageTitle="Products" [breadcrumbs]="[{title:'Products',url:'/products',icon:'deployed_code'}]" />
+<flexi-grid [data]="data()" [showCaption]="true" captionTitle="Product List" [showExportExcelBtn]="true"
+  exportExcelFileName="productsList" language="tr" [loading]="loading()" (onRefresh)="result.reload()">
+
+  <ng-template flexiGridCaptionCommandTemplate>
+    <flexi-button btnIcon="add" btnColor="primary" title="Create Product" [routerLink]="['/products/create']"
+      flexiTooltip btnSize="small" />
+  </ng-template>
 
   <flexi-grid-column field="imageUrl" title="Product Image" textAlign="center" width="70px" [filterable]="false">
     <ng-template flexiGridCellTemplate let-item>
-      <img [src]="item.imageUrl" alt="{{item.name}}" width="70" height="70" class="product-image" style="object-fit: contain;" />
+      <img [src]="item.imageUrl" alt="{{item.name}}" width="70" height="70" class="product-image"
+        style="object-fit: contain;" />
     </ng-template>
   </flexi-grid-column>
-  <flexi-grid-column field="name" title="Product Name"/>
-  <flexi-grid-column field="categoryName" title="Category Name" filterType="select" [filterData]="categoryFilter()"/>
-  <flexi-grid-column field="price" title="Product Price" filterType="number" textAlign="right" format="c" symbol="₺"/>
-  <flexi-grid-column field="stock" title="Product Stock" filterType="number" textAlign="right"/>
+  <flexi-grid-column field="name" title="Product Name" />
+  <flexi-grid-column field="categoryName" title="Category Name" filterType="select" [filterData]="categoryFilter()" />
+  <flexi-grid-column field="price" title="Product Price" filterType="number" textAlign="right" format="c" symbol="₺" />
+  <flexi-grid-column field="stock" title="Product Stock" filterType="number" textAlign="right" />
   <ng-template flexiGridColumnCommandTemplate let-item>
-   <flexi-button btnIcon="edit" btnColor="info" title="Edit Product" flexiTooltip btnSize="small"/>
-   <flexi-button btnIcon="delete" btnColor="danger" title="Delete Product" flexiTooltip btnSize="small"/>
+    <flexi-button btnIcon="edit" btnColor="info" title="Edit Product" flexiTooltip btnSize="small" />
+    <flexi-button (click)="delete(item.id)" btnIcon="delete" btnColor="danger" title="Delete Product" flexiTooltip btnSize="small" />
   </ng-template>
 </flexi-grid>
