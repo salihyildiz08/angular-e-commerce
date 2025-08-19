@@ -12,29 +12,41 @@
       <div class="card-body">
         <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
 
-          <div class="form-group">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="data().name" name="name" placeholder="Enter product name" />
-          </div>
 
-          <div class="form-group">
-            <label for="imageUrl" class="form-label">Product Image</label>
-            <input type="text" class="form-control" id="imageUrl"  [(ngModel)]="data().imageUrl" name="imageUrl" placeholder="Enter product imageUrl" />
-          </div>
+            <div class="form-group">
+              <label for="name" class="form-label">Category Name</label>
+              <flexi-select [data]="categories()" label="name" value="id" [(ngModel)]="data().categoryId"
+                name="categoryId" [required]="true" [loading]="categoryLoading()" language="tr"
+                (ngModelChange)="setCategoryName()"/>
+            </div>
 
-          <div class="form-group">
-            <label for="price" class="form-label">Product Price</label>
-            <input type="text" class="form-control" id="price"  [(ngModel)]="data().price" name="price" mask="separator.2" thousandSeparator="."  placeholder="Enter product price" />
-          </div>
+            <div class="form-group">
+              <label for="name" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="data().name" name="name"
+                placeholder="Enter product name" />
+            </div>
 
-          <div class="form-group">
-            <label for="stock" class="form-label">Product Stock</label>
-            <input type="number" class="form-control" id="stock"  [(ngModel)]="data().stock" name="stock"  placeholder="Enter product stock" />
-          </div>
+            <div class="form-group">
+              <label for="imageUrl" class="form-label">Product Image</label>
+              <input type="text" class="form-control" id="imageUrl" [(ngModel)]="data().imageUrl" name="imageUrl"
+                placeholder="Enter product imageUrl" />
+            </div>
 
-          <div class="form-group mt-2 d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">{{btnName()}}</button>
-          </div>
+            <div class="form-group">
+              <label for="price" class="form-label">Product Price</label>
+              <input type="text" class="form-control" id="price" [(ngModel)]="data().price" name="price"
+                mask="separator.2" thousandSeparator="." placeholder="Enter product price" />
+            </div>
+
+            <div class="form-group">
+              <label for="stock" class="form-label">Product Stock</label>
+              <input type="number" class="form-control" id="stock" [(ngModel)]="data().stock" name="stock"
+                placeholder="Enter product stock" />
+            </div>
+
+            <div class="form-group mt-2 d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">{{btnName()}}</button>
+            </div>
 
         </form>
       </div>

@@ -29,7 +29,7 @@ export default class CategoryCreate {
     loader: async () => {
       const res = await lastValueFrom(
         this.#http.get<CategoryModel>(
-          `http://localhost:3000/categories/${this.id()}`
+          `api/categories/${this.id()}`
         )
       );
       return res;
@@ -59,7 +59,7 @@ export default class CategoryCreate {
 
     if (!this.id()) {
       this.#http
-        .post('http://localhost:3000/categories', this.data())
+        .post('api/categories', this.data())
         .subscribe(() => {
           this.#router.navigateByUrl('/categories');
           this.#toast.showToast(
@@ -70,7 +70,7 @@ export default class CategoryCreate {
         });
     } else {
       this.#http
-        .put(`http://localhost:3000/categories/${this.id()}`, this.data())
+        .put(`api/categories/${this.id()}`, this.data())
         .subscribe(() => {
           this.#router.navigateByUrl('/categories');
           this.#toast.showToast(

@@ -17,6 +17,15 @@
       "stock": 70,
       "categoryId": "1",
       "categoryName": "Freezer"
+    },
+    {
+      "id": "a066",
+      "name": "Samsung S24 Ultra",
+      "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQAsg37jQgYKlpA6QkVlAqrpdR1FW9kxXfD6fqkX4OvwhpNmi7nsoutEhlKMjrzALtDd-Il-_BvNcRK-gc4YbGYdYwQpaZIQRbx7Hd7zcUdr5IuzHbB8DeQNQ",
+      "price": 25500,
+      "stock": 10,
+      "categoryId": "1",
+      "categoryName": "Phone"
     }
   ],
   "categories": [
@@ -31,6 +40,10 @@
     {
       "id": "4",
       "name": "Television"
+    },
+    {
+      "id": "1815",
+      "name": "Garden"
     }
   ]
 }

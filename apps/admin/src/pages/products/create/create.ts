@@ -3,21 +3,24 @@ import {
   Component,
   computed,
   inject,
+  linkedSignal,
   resource,
   signal,
   ViewEncapsulation,
 } from '@angular/core';
 import Blank from '../../../components/blank';
 import { FormsModule, NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
 import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
 import { initialProduct, ProductModel } from '../products';
+import { CategoryModel } from '../../categories/categories';
+import { FlexiSelectModule } from 'flexi-select';
 
 @Component({
-  imports: [Blank, FormsModule, NgxMaskDirective],
+  imports: [Blank, FormsModule, NgxMaskDirective, FlexiSelectModule],
   templateUrl: './create.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,17 +32,21 @@ export default class ProductCreate {
     loader: async () => {
       const res = await lastValueFrom(
         this.#http.get<ProductModel>(
-          `http://localhost:3000/products/${this.id()}`
+          `api/products/${this.id()}`
         )
       );
       return res;
     },
   });
 
-  readonly data = computed(() => this.result.value()?? {...initialProduct});
+  readonly data = linkedSignal(() => this.result.value() ?? { ...initialProduct });
 
-  readonly cardTitle = computed(() =>this.id() ? 'Product Edit' : 'Product Create');
-  readonly btnName = computed(() =>this.id() ? 'Update' : 'Create');
+  readonly categoryResult = httpResource<CategoryModel[]>(() => 'api/categories');
+  readonly categories = computed(() => this.categoryResult.value() || []);
+  readonly categoryLoading = computed(() => this.categoryResult.isLoading());
+
+  readonly cardTitle = computed(() => this.id() ? 'Product Edit' : 'Product Create');
+  readonly btnName = computed(() => this.id() ? 'Update' : 'Create');
 
   readonly #http = inject(HttpClient);
   readonly #router = inject(Router);
@@ -56,29 +63,35 @@ export default class ProductCreate {
   save(form: NgForm) {
     if (!form.valid) return;
 
-    if(!this.id()) {
+    if (!this.id()) {
       this.#http
-      .post('http://localhost:3000/products', this.data())
-      .subscribe(() => {
-        this.#router.navigateByUrl('/products');
-        this.#toast.showToast(
-          'Success',
-          'Product created successfully!',
-          'success'
-        );
-      });
+        .post('api/products', this.data())
+        .subscribe(() => {
+          this.#router.navigateByUrl('/products');
+          this.#toast.showToast(
+            'Success',
+            'Product created successfully!',
+            'success'
+          );
+        });
     }
-    else{
+    else {
       this.#http
-      .put(`http://localhost:3000/products/${this.id()}`, this.data())
-      .subscribe(() => {
-        this.#router.navigateByUrl('/products');
-        this.#toast.showToast(
-          'Success',
-          'Product updated successfully!',
-          'info'
-        );
-      });
+        .put(`api/products/${this.id()}`, this.data())
+        .subscribe(() => {
+          this.#router.navigateByUrl('/products');
+          this.#toast.showToast(
+            'Success',
+            'Product updated successfully!',
+            'info'
+          );
+        });
     }
+}
+
+  setCategoryName() {
+    const id = this.data().categoryId;
+    const category = this.categories().find(c => c.id === id);
+    this.data.update((prev) => ({ ...prev, categoryName: category?.name ?? "" }));
   }
 }

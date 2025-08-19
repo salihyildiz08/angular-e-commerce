@@ -3,7 +3,6 @@ import {
   Component,
   computed,
   inject,
-  signal,
   ViewEncapsulation,
 } from '@angular/core';
 import Blank from '../../components/blank';
@@ -11,7 +10,7 @@ import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
-
+import { CategoryModel } from '../categories/categories';
 export interface ProductModel {
   id?: string;
   name: string;
@@ -39,24 +38,22 @@ export const initialProduct: ProductModel = {
 })
 export default class Products {
   readonly result = httpResource<ProductModel[]>(
-    () => 'http://localhost:3000/products'
+    () => 'api/products'
   );
 
   readonly data = computed(() => this.result.value() || []);
   readonly loading = computed(() => this.result.isLoading());
+
+
+
   readonly #toast = inject(FlexiToastService);
   readonly #http = inject(HttpClient);
 
-  readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
-    {
-      name: 'Phone',
-      value: 'Phone',
-    },
-    {
-      name: 'Freezer',
-      value: 'Freezer',
-    },
-  ]);
+  readonly categoryResult = httpResource<CategoryModel[]>(() => 'api/categories');
+  readonly categoryFilter =computed<FlexiGridFilterDataModel[]>(() =>{
+    const categories = this.categoryResult.value() ?? [];
+    return categories.map<FlexiGridFilterDataModel>((c) => ({name: c.name, value: c.name }));
+  } );
 
   delete(id: string) {
     console.log('Deleting product with ID:', id);
@@ -66,7 +63,7 @@ export default class Products {
       'Sil',
       () => {
         this.#http
-          .delete(`http://localhost:3000/products/${id}`)
+          .delete(`api/products/${id}`)
           .subscribe((res) => {
             this.result.reload();
           });
