@@ -4,6 +4,7 @@ import { FlexiGridModule } from 'flexi-grid';
 import { RouterLink } from '@angular/router';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { FlexiToastService } from 'flexi-toast';
+import { api } from '../../constants';
 
 export interface CategoryModel {
   id?: string;
@@ -22,7 +23,7 @@ export const initialCategory: CategoryModel = {
 })
 export default class Categories {
   readonly result = httpResource<CategoryModel[]>(
-    () => 'http://localhost:3000/categories'
+    () => `api/categories`,
   );
 
   readonly data = computed(() => this.result.value() || []);
@@ -38,7 +39,7 @@ export default class Categories {
       'Sil',
       () => {
         this.#http
-          .delete(`http://localhost:3000/categories/${id}`)
+          .delete(`api/categories/${id}`)
           .subscribe((res) => {
             this.result.reload();
           });
