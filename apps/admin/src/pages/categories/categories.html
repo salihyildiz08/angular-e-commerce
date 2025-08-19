@@ -1,0 +1,16 @@
+<app-blank pageTitle="Categories" [breadcrumbs]="[{title:'Categories',url:'/categories',icon:'category'}]" />
+
+<flexi-grid [data]="data()" [showCaption]="true" captionTitle="Category List" [showExportExcelBtn]="true"
+  exportExcelFileName="CategoriesList" language="tr" [loading]="loading()" (onRefresh)="result.reload()">
+
+  <ng-template flexiGridCaptionCommandTemplate>
+    <flexi-button btnIcon="add" btnColor="primary" title="Create Category" [routerLink]="['/categories/create']"
+      flexiTooltip btnSize="small" />
+  </ng-template>
+
+  <flexi-grid-column field="name" title="Category Name" />
+  <ng-template flexiGridColumnCommandTemplate let-item>
+    <flexi-button [routerLink]="['/','categories','edit',item.id]" routerLinkActive="router-link-active"   btnIcon="edit" btnColor="info" title="Edit Category" flexiTooltip btnSize="small" />
+    <flexi-button (click)="delete(item.id)" btnIcon="delete" btnColor="danger" title="Delete Category" flexiTooltip btnSize="small" />
+  </ng-template>
+</flexi-grid>

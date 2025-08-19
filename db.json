@@ -18,5 +18,19 @@
       "categoryId": "1",
       "categoryName": "Freezer"
     }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Phone"
+    },
+    {
+      "id": "2",
+      "name": "Freezer"
+    },
+    {
+      "id": "4",
+      "name": "Television"
+    }
   ]
 }

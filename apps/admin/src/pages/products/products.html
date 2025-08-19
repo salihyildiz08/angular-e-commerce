@@ -1,4 +1,5 @@
 <app-blank pageTitle="Products" [breadcrumbs]="[{title:'Products',url:'/products',icon:'deployed_code'}]" />
+
 <flexi-grid [data]="data()" [showCaption]="true" captionTitle="Product List" [showExportExcelBtn]="true"
   exportExcelFileName="productsList" language="tr" [loading]="loading()" (onRefresh)="result.reload()">
 
