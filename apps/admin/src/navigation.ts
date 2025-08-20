@@ -10,14 +10,19 @@ export const navigations: NavigationModel[] = [
     url: '/',
     icon: 'home',
   },
-    {
+  {
+    title: 'Categories',
+    url: '/categories',
+    icon: 'category',
+  },
+  {
     title: 'Products',
     url: '/products',
     icon: 'deployed_code',
   },
   {
-    title: 'Categories',
-    url: '/categories',
-    icon: 'category',
+    title: 'Users',
+    url: '/users',
+    icon: 'group',
   },
 ];
