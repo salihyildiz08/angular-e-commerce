@@ -1,0 +1,61 @@
+<app-blank pageTitle="User Create" [breadcrumbs]="[
+  {title:'users',url:'/users',icon:'deployed_code'},
+  {title:'Create',url:'/users/create',icon:'add'}
+]" />
+
+<div class="row">
+  <div class="col-md-4 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">{{cardTitle()}}</h3>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
+
+          <div class="form-group">
+            <label for="firstName" class="form-label">User First Name</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="data().firstName" name="firstName"
+              placeholder="Enter User first Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName" class="form-label">User Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="data().lastName" name="lastName"
+              placeholder="Enter User last Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="userName" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="userName" [(ngModel)]="data().userName" name="userName"
+              placeholder="Enter User Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="data().email" name="email"
+              placeholder="Enter User email" />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">password</label>
+            <input type="text" class="form-control" id="password" [(ngModel)]="data().password" name="password"
+              placeholder="Enter User password" />
+          </div>
+
+          <div class="form-group">
+            <div class="form-check form-switch mt-2">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                [(ngModel)]="data().isAdmin" name="isAdmin">
+              <label for="checked" class="form-check-label">isAdmin</label>
+            </div>
+          </div>
+
+          <div class="form-group mt-2 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">{{btnName()}}</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

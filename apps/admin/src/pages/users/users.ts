@@ -29,10 +29,7 @@ export const initialUser:UserModel = {
   email: "",
   password: "",
   isAdmin: false,
-
-  get fullName(): string {
-    return `${this.firstName} ${this.lastName}`;
-  }
+fullName: "",
 }
 
 @Component({
@@ -49,16 +46,14 @@ readonly result = httpResource<UserModel[]>(() => "api/users");
   readonly #toast = inject(FlexiToastService);
   readonly #http = inject(HttpClient);
 
-  delete(id: string) {
-    this.#toast.showSwal(
-      'Delete User',
-      'Are you sure you want to delete this user?',
-      'warning',
-      () => {
-        this.#http.delete(`/api/users/${id}`).subscribe(() => {
-          this.result.reload();
-        });
-      }
-    );
+  delete(id: string){
+    this.#toast.showSwal("Delete User",
+      "Are you sure you want to delete this user?","Delete",() => {
+      this.#http.delete(`api/users/${id}`).subscribe(()=> {
+        this.result.reload();
+      })
+    })
   }
+
+
 }
