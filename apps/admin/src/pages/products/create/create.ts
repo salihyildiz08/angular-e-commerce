@@ -18,6 +18,7 @@ import { lastValueFrom } from 'rxjs';
 import { initialProduct, ProductModel } from '../products';
 import { CategoryModel } from '../../categories/categories';
 import { FlexiSelectModule } from 'flexi-select';
+import { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   imports: [Blank, FormsModule, NgxMaskDirective, FlexiSelectModule],
@@ -27,6 +28,9 @@ import { FlexiSelectModule } from 'flexi-select';
 })
 export default class ProductCreate {
   readonly id = signal<string | undefined>(undefined);
+    readonly breadcrumbs = signal<BreadcrumbModel[]>([
+      { title: 'Products', url: '/products', icon: 'deployed_code' },
+    ]);
   readonly result = resource({
     params: () => this.id(),
     loader: async () => {
@@ -35,6 +39,10 @@ export default class ProductCreate {
           `api/products/${this.id()}`
         )
       );
+      this.breadcrumbs.update((prev) => [
+        ...prev,
+        { title: res.name, url: `/products/edit/${this.id()}`, icon: 'edit' },
+      ]);
       return res;
     },
   });
@@ -45,7 +53,7 @@ export default class ProductCreate {
   readonly categories = computed(() => this.categoryResult.value() || []);
   readonly categoryLoading = computed(() => this.categoryResult.isLoading());
 
-  readonly cardTitle = computed(() => this.id() ? 'Product Edit' : 'Product Create');
+  readonly title = computed(() => this.id() ? 'Product Edit' : 'Product Create');
   readonly btnName = computed(() => this.id() ? 'Update' : 'Create');
 
   readonly #http = inject(HttpClient);
@@ -57,6 +65,12 @@ export default class ProductCreate {
   constructor() {
     this.#activate.params.subscribe((params) => {
       if (params['id']) this.id.set(params['id']);
+       else {
+        this.breadcrumbs.update((prev) => [
+          ...prev,
+          { title: 'Create', url: '/products/create', icon: 'add' },
+        ]);
+      }
     });
   }
 

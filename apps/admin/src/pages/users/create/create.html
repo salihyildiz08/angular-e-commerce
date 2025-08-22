@@ -1,13 +1,10 @@
-<app-blank pageTitle="User Create" [breadcrumbs]="[
-  {title:'users',url:'/users',icon:'deployed_code'},
-  {title:'Create',url:'/users/create',icon:'add'}
-]" />
+<app-blank [pageTitle]="title()" [breadcrumbs]="breadcrumbs()" />
 
 <div class="row">
   <div class="col-md-4 col-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">{{cardTitle()}}</h3>
+        <h3 class="card-title">{{title()}}</h3>
       </div>
       <div class="card-body">
         <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
