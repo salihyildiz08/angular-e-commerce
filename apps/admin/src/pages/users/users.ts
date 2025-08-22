@@ -42,7 +42,7 @@ fullName: "",
 export default class Users {
 readonly result = httpResource<UserModel[]>(() => "api/users");
   readonly data = computed(() => this.result.value() ?? []);
-  readonly loading = computed(() => this.result.isLoading());
+  readonly loading = computed(() =>  this.result.isLoading());
 
   readonly #toast = inject(FlexiToastService);
   readonly #http = inject(HttpClient);

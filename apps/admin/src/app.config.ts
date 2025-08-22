@@ -11,6 +11,7 @@ import localeTr from '@angular/common/locales/tr';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
 import { endpointInterceptor } from './interceptors/endpoint-interceptor';
+import { errorInterceptor } from './interceptors/error-interceptor';
 
 registerLocaleData(localeTr);
 
@@ -20,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(appRoutes),
     provideNgxMask(),
-    provideHttpClient(withInterceptors([endpointInterceptor])),
+    provideHttpClient(withInterceptors([endpointInterceptor,errorInterceptor])),
     {
       provide: 'LOCALE_ID',
       useValue: 'tr',
