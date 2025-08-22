@@ -25,6 +25,11 @@ readonly #router=inject(Router);
        this.#toast.showToast("Error","Invalid username or password","error");
        return;
       }
+      else if(!res[0].isAdmin)
+        {
+       this.#toast.showToast("Error","You do not have access authorization.","error");
+       return;
+      }
       localStorage.setItem("response",JSON.stringify(res[0]));
       this.#router.navigateByUrl("/");
     });
