@@ -10,6 +10,7 @@ import { HttpClient, httpResource } from '@angular/common/http';
 import { FlexiGridModule } from 'flexi-grid';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
+import { FormsModule } from '@angular/forms';
 
 export interface UserModel{
   id?: string;
@@ -33,7 +34,7 @@ fullName: "",
 }
 
 @Component({
-  imports: [Blank, FlexiGridModule,RouterLink],
+  imports: [Blank, FlexiGridModule,RouterLink,FormsModule],
   templateUrl: './users.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,5 +56,10 @@ readonly result = httpResource<UserModel[]>(() => "api/users");
     })
   }
 
+  changeIsAdmin(data: UserModel){
+    this.#http.put(`api/users/${data.id}`,data).subscribe(()=>{
+      this.result.reload();
+    });
+  }
 
 }
