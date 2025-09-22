@@ -11,11 +11,12 @@ import Blank from '../../../components/blank';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
-import { CategoryModel, initialCategory } from '../categories';
+import { CategoryModel, initialCategory } from '@shared/models/category.model';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
 import { BreadcrumbModel } from '../../layouts/breadcrumb';
+
 
 @Component({
   imports: [Blank, FormsModule, NgxMaskDirective],

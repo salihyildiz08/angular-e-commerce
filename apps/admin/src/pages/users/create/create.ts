@@ -10,12 +10,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { initialUser, UserModel } from '../users';
+import { initialUser, UserModel } from'@shared/models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
 import { FormsModule, NgForm } from '@angular/forms';
 import Blank from '../../../components/blank';
 import { BreadcrumbModel } from '../../layouts/breadcrumb';
+
 
 @Component({
   imports: [FormsModule,Blank],
