@@ -7,7 +7,8 @@
       "price": 100,
       "stock": 50,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -16,7 +17,8 @@
       "price": 200,
       "stock": 70,
       "categoryId": "1",
-      "categoryName": "Freezer"
+      "categoryName": "Freezer",
+      "categoryUrl": "freezer"
     },
     {
       "id": "a066",
@@ -25,7 +27,8 @@
       "price": 25500,
       "stock": 10,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -34,7 +37,8 @@
       "price": 100,
       "stock": 50,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
     },
     {
       "id": "1",
@@ -43,7 +47,8 @@
       "price": 200,
       "stock": 70,
       "categoryId": "1",
-      "categoryName": "Freezer"
+      "categoryName": "Freezer",
+      "categoryUrl":"freezer"
     },
     {
       "id": "a066",
@@ -52,7 +57,8 @@
       "price": 25500,
       "stock": 10,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
     },
     {
       "id": "1",
@@ -61,7 +67,8 @@
       "price": 100,
       "stock": 50,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
     },
     {
       "id": "1",
@@ -70,7 +77,8 @@
       "price": 200,
       "stock": 70,
       "categoryId": "1",
-      "categoryName": "Freezer"
+      "categoryName": "Freezer",
+      "categoryUrl":"freezer"
     },
     {
       "id": "a066",
@@ -79,7 +87,8 @@
       "price": 25500,
       "stock": 10,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
     },
     {
       "id": "1",
@@ -88,7 +97,9 @@
       "price": 100,
       "stock": 50,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
+
     },
     {
       "id": "1",
@@ -97,7 +108,8 @@
       "price": 200,
       "stock": 70,
       "categoryId": "1",
-      "categoryName": "Freezer"
+      "categoryName": "Freezer",
+      "categoryUrl":"freezer"
     },
     {
       "id": "a066",
@@ -106,29 +118,40 @@
       "price": 25500,
       "stock": 10,
       "categoryId": "1",
-      "categoryName": "Phone"
+      "categoryName": "Phone",
+      "categoryUrl":"phone"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Phone"
+      "name": "Phone",
+      "Url": "phone",
+      "url": "phone"
     },
     {
       "id": "2",
-      "name": "Freezer"
+      "name": "Freezer",
+      "Url": "freezer",
+      "url": "freezer"
     },
     {
       "id": "4",
-      "name": "Television"
+      "name": "Television",
+      "Url": "tv",
+      "url": "television"
     },
     {
       "id": "1815",
-      "name": "Garden"
+      "name": "Garden",
+      "Url": "garden",
+      "url": "garden"
     },
     {
       "id": "4ee0",
-      "name": "Computer"
+      "name": "Computer",
+      "Url": "computer",
+      "url": "computer"
     }
   ],
   "users": [
