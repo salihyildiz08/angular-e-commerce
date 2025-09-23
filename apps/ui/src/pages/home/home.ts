@@ -14,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class Home {
+    readonly placeholderCount = signal<number[]>([1,2,3]);
+
 readonly categoryUrl = signal<string | undefined>(undefined);
   readonly categoryUrlPrev = this.computedPrevious(this.categoryUrl);
 
@@ -30,6 +32,7 @@ readonly categoryUrl = signal<string | undefined>(undefined);
   readonly data = computed(() => this.result.value() ?? []);
   readonly dataSignal=signal<ProductModel[]>([]);
 
+  readonly loading = computed(() => this.result.isLoading());
 readonly #actived=inject(ActivatedRoute);
 
   constructor() {
