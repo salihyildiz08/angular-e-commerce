@@ -7,6 +7,10 @@ const routes : Routes = [{
     {
       path:'register',
       loadComponent:()=>import('./register/register')
+    },
+    {
+      path:'login',
+      loadComponent:()=>import('./login/login')
     }
   ]
 }
