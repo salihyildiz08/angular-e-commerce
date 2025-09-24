@@ -38,7 +38,7 @@
       "stock": 50,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -48,7 +48,7 @@
       "stock": 70,
       "categoryId": "1",
       "categoryName": "Freezer",
-      "categoryUrl":"freezer"
+      "categoryUrl": "freezer"
     },
     {
       "id": "a066",
@@ -58,7 +58,7 @@
       "stock": 10,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -68,7 +68,7 @@
       "stock": 50,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -78,7 +78,7 @@
       "stock": 70,
       "categoryId": "1",
       "categoryName": "Freezer",
-      "categoryUrl":"freezer"
+      "categoryUrl": "freezer"
     },
     {
       "id": "a066",
@@ -88,7 +88,7 @@
       "stock": 10,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -98,8 +98,7 @@
       "stock": 50,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
-
+      "categoryUrl": "phone"
     },
     {
       "id": "1",
@@ -109,7 +108,7 @@
       "stock": 70,
       "categoryId": "1",
       "categoryName": "Freezer",
-      "categoryUrl":"freezer"
+      "categoryUrl": "freezer"
     },
     {
       "id": "a066",
@@ -119,7 +118,7 @@
       "stock": 10,
       "categoryId": "1",
       "categoryName": "Phone",
-      "categoryUrl":"phone"
+      "categoryUrl": "phone"
     }
   ],
   "categories": [
@@ -163,6 +162,16 @@
       "email": "yldzsalih27@gmail.com",
       "password": "123456",
       "isAdmin": true,
+      "fullName": "Salih Yıldız"
+    },
+    {
+      "id": "befe",
+      "firstName": "Salih",
+      "lastName": "Yıldız",
+      "userName": "salihyldz",
+      "email": "yldzsalih27@gmail.com",
+      "password": "123456",
+      "isAdmin": false,
       "fullName": "Salih Yıldız"
     }
   ]
