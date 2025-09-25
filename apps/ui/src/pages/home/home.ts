@@ -4,6 +4,7 @@ import { TrCurrencyPipe } from 'tr-currency';
 import { httpResource } from '@angular/common/http';
 import { ProductModel } from '@shared/models/product.model';
 import { ActivatedRoute } from '@angular/router';
+import { Common } from '../../services/common';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,8 @@ export default class Home {
 
 readonly categoryUrl = signal<string | undefined>(undefined);
   readonly categoryUrlPrev = this.computedPrevious(this.categoryUrl);
+  readonly user=computed(() => this.#common.user());
+
 
   readonly limit = signal<number>(6);
   readonly start = signal<number>(0);
@@ -34,6 +37,8 @@ readonly categoryUrl = signal<string | undefined>(undefined);
 
   readonly loading = computed(() => this.result.isLoading());
 readonly #actived=inject(ActivatedRoute);
+readonly #common=inject(Common);
+
 
   constructor() {
 this.#actived.params.subscribe(res=>{
