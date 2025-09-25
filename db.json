@@ -168,37 +168,33 @@
       "id": "befe",
       "firstName": "Salih",
       "lastName": "Yıldız",
-      "userName": "salihyldz",
+      "userName": "salihyldz1",
       "email": "yldzsalih27@gmail.com",
-      "password": "123456",
+      "password": "12345",
       "isAdmin": false,
       "fullName": "Salih Yıldız"
     }
   ],
   "baskets": [
     {
-      "id": "1075",
+      "id": "b94a",
+      "userId": "ed17",
       "productId": "1",
       "productName": "Iphone 15 Pro Max",
       "price": 100,
       "quantity": 1
     },
     {
-      "id": "415f",
-      "productId": "1",
-      "productName": "Freezer ",
-      "price": 200,
+      "id": "01a1",
+      "userId": "ed17",
+      "productId": "a066",
+      "productName": "Samsung S24 Ultra",
+      "price": 25500,
       "quantity": 1
     },
     {
-      "id": "a0d0",
-      "productId": "1",
-      "productName": "Freezer ",
-      "price": 200,
-      "quantity": 1
-    },
-    {
-      "id": "a41b",
+      "id": "b8db",
+      "userId": "ed17",
       "productId": "a066",
       "productName": "Samsung S24 Ultra",
       "price": 25500,

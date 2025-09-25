@@ -22,6 +22,7 @@ readonly #common=inject(Common);
   logout(){
     localStorage.clear();
     this.#common.user.set(undefined);
+      this.#common.basketCount.set(0);
     this.#router.navigateByUrl("/auth/login");
 
   }
