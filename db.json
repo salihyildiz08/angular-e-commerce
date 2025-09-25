@@ -174,5 +174,35 @@
       "isAdmin": false,
       "fullName": "Salih Yıldız"
     }
+  ],
+  "baskets": [
+    {
+      "id": "1075",
+      "productId": "1",
+      "productName": "Iphone 15 Pro Max",
+      "price": 100,
+      "quantity": 1
+    },
+    {
+      "id": "415f",
+      "productId": "1",
+      "productName": "Freezer ",
+      "price": 200,
+      "quantity": 1
+    },
+    {
+      "id": "a0d0",
+      "productId": "1",
+      "productName": "Freezer ",
+      "price": 200,
+      "quantity": 1
+    },
+    {
+      "id": "a41b",
+      "productId": "a066",
+      "productName": "Samsung S24 Ultra",
+      "price": 25500,
+      "quantity": 1
+    }
   ]
 }

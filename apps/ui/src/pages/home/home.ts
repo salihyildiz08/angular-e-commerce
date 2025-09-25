@@ -1,10 +1,12 @@
 import { Component, computed, signal, ViewEncapsulation, ChangeDetectionStrategy, effect, inject, untracked, Signal } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TrCurrencyPipe } from 'tr-currency';
-import { httpResource } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import { ProductModel } from '@shared/models/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { Common } from '../../services/common';
+import { BasketModel } from '@shared/models/basket.model';
+import { FlexiToastService } from 'flexi-toast';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +40,8 @@ readonly categoryUrl = signal<string | undefined>(undefined);
   readonly loading = computed(() => this.result.isLoading());
 readonly #actived=inject(ActivatedRoute);
 readonly #common=inject(Common);
+readonly #http = inject(HttpClient);
+readonly #toast = inject(FlexiToastService);
 
 
   constructor() {
@@ -59,6 +63,7 @@ effect(() => {
     })
   }
   onScroll() {
+    if(this.start() >= 0) return;
     this.limit.update((c) => c + 6);
     this.start.update((c) => c + 6);
   }
@@ -75,4 +80,22 @@ effect(() => {
       return result;
     });
   }
+
+
+ addBasket(data: ProductModel){
+  console.log(data);
+    const basket: BasketModel = {
+      productId: data.id!,
+      productName: data.name,
+      price: data.price,
+      quantity: 1
+    };
+
+    this.#http.post("api/baskets",basket).subscribe(res => {
+      this.#toast.showToast("Başarılı","Ürün sepete başarıyla eklendi");
+      this.#common.basketCount.update(prev => prev + 1);
+    });
+  }
+
+
 }
