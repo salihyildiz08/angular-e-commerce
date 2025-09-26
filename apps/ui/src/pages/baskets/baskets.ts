@@ -4,9 +4,10 @@ import { BasketModel } from '@shared/models/basket.model';
 import { Common } from '../../services/common';
 import { TrCurrencyPipe } from 'tr-currency';
 import { FlexiToastService } from 'flexi-toast';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [TrCurrencyPipe],
+  imports: [TrCurrencyPipe,RouterLink],
   templateUrl: './baskets.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
