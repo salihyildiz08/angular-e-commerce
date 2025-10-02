@@ -26,12 +26,12 @@
                         <h3><i class="fas fa-map-marker-alt"></i> Teslimat Adresi</h3>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="">Ad Soyad *</label>
+                               <label for="">Ad Soyad *</label>
                                 <input type="text" [(ngModel)]="data().fullName" name="fullName" required
                                     placeholder="Adınız ve soyadınız">
                             </div>
                             <div class="form-group">
-                                <label for="">Telefon *</label>
+                               <label for="">Telefon *</label>
                                 <input
                                   type="tel"
                                   prefix="+90"
@@ -43,26 +43,37 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="">İl *</label>
-                                <select [(ngModel)]="data().city" name="city" required>
-                                    <option value="">İl seçiniz</option>
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">İzmir</option>
-                                    <option value="kayseri">Kayseri</option>
-                                </select>
+                            <div class="form-group city-select">
+                               <label for="">İl *</label>
+                                <flexi-select
+                                    [data]="cities()"
+                                    label="il_adi"
+                                    value="il_adi"
+                                    language="tr"
+                                    [(ngModel)]="data().city"
+                                    name="city"
+                                    [required]="true"
+                                    [showValidationErrors]="false"
+                                    (ngModelChange)="setDistricts()"
+                                />
                             </div>
                             <div class="form-group">
-                                <label for="">İlçe *</label>
-                                <select [(ngModel)]="data().district" name="district" required>
-                                    <option value="">İlçe seçiniz</option>
-                                    <option value="merkez">Merkez</option>
-                                </select>
+                               <label for="">İlçe *</label>
+                                <flexi-select
+                                    [data]="districts()"
+                                    label="ilce_adi"
+                                    value="ilce_adi"
+                                    language="tr"
+                                    [(ngModel)]="data().district"
+                                    name="district"
+                                    [required]="true"
+                                    [showValidationErrors]="false"
+                                    [disabled]="!data().city"
+                                />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Adres *</label>
+                           <label for="">Adres *</label>
                             <textarea [(ngModel)]="data().fullAddress" name="fullAddress" required
                                 placeholder="Mahalle, sokak, bina no, daire no">
                                         </textarea>
@@ -86,7 +97,7 @@
                         <div class="card-form" id="card-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="">Kart Numarası *</label>
+                                   <label for="">Kart Numarası *</label>
                                     <input
                                       type="text"
                                       [mask]="'0000-0000-0000-0000'"
@@ -96,25 +107,25 @@
                                       maxlength="19">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Kart Üzerindeki İsim *</label>
+                                   <label for="">Kart Üzerindeki İsim *</label>
                                     <input type="text" [(ngModel)]="data().cartOwnerName" name="cardOwnerName"
                                         placeholder="AD SOYAD">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="">Son Kullanma Tarihi *</label>
+                                   <label for="">Son Kullanma Tarihi *</label>
                                     <input type="text" [(ngModel)]="data().expiresDate" name="expiresDate"
                                         placeholder="MM/YY" maxlength="5">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">CVV *</label>
+                                   <label for="">CVV *</label>
                                     <input type="text" [(ngModel)]="data().cvv" name="cvv" placeholder="123"
                                         maxlength="3">
                                 </div>
                             </div>
                             <div class="installment-options">
-                                <label for="">Taksit Seçenekleri:</label>
+                               <label for="">Taksit Seçenekleri:</label>
                                 <select [(ngModel)]="data().installmentOptions" name="installmentOptions">
                                     <option value="Tek Çekim">Tek Çekim</option>
                                     <option value="3 Taksit">3 Taksit</option>
